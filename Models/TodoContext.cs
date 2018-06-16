@@ -10,5 +10,12 @@ namespace Kronos_Server.Models
         }
 
         public DbSet<TodoItem> TodoItems { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TodoItem>()
+                .Property(item => item.Name)
+                .IsRequired();
+        }
     }
 }
